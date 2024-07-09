@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  postgres:
+    restart: always
+    image: postgres:16-alpine
+    container_name: multi-step-wizard-db
+    ports:
+      - '${POSTGRES_PORT:-25432}:5432'
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pass}
+    volumes:
+      - ./db:/var/lib/postgresql/data

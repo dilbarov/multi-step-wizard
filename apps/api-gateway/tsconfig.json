@@ -2,7 +2,16 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "moduleResolution": "Node",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "paths": {
+      "@lib/providers": [
+        "libs/providers/src"
+      ],
+      "@lib/providers/*": [
+        "libs/providers/src/*"
+      ]
+    }
   },
   "importHelpers": true,
   "exclude": [
