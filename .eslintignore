@@ -1,0 +1,6 @@
+node_modules
+dist
+infra
+migrations
+*.md
+eslint.config.mjs
