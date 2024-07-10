@@ -1,4 +1,5 @@
 import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { NestFactory, Reflector } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { Logger, PinoLogger } from 'nestjs-pino';
@@ -9,6 +10,7 @@ import { AppModule } from './app.module';
 const bootstrap = async (): Promise<void> => {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, { bufferLogs: true });
   const reflector = app.get(Reflector);
+  const configService = app.get(ConfigService);
 
   // logger pino use
   app.useLogger(app.get(Logger));
@@ -38,8 +40,9 @@ const bootstrap = async (): Promise<void> => {
   logger.warn('Swagger enabled');
   swaggerLoad(app, '');
 
-  await app.listen(3000);
-  logger.warn(`Listening to http://localhost:${3000}`);
-  logger.warn(`Swagger UI: http://localhost:${3000}/swagger`);
+  const port = configService.get('PORT');
+  await app.listen(port);
+  logger.warn(`Listening to http://localhost:${port}`);
+  logger.warn(`Swagger UI: http://localhost:${port}/swagger`);
 };
 void bootstrap().then();

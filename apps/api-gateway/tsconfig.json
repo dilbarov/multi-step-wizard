@@ -10,6 +10,18 @@
       ],
       "@lib/providers/*": [
         "libs/providers/src/*"
+      ],
+      "@entities": [
+        "libs/entities/src"
+      ],
+      "@entities/*": [
+        "libs/entities/src/*"
+      ],
+      "@lib/shared": [
+        "libs/shared/src"
+      ],
+      "@lib/shared/*": [
+        "libs/shared/src/*"
       ]
     }
   },
