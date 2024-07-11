@@ -24,6 +24,20 @@ export class QuestionnaireService {
     return items.map(item => new PublicQuestionnaireGetDto(item));
   }
 
+  public async getQuestionnaire(questionnaireId: string): Promise<PublicQuestionnaireGetDto> {
+    const questionnaire = await this.questionnaireRepository.findOne({
+      where: {
+        id: questionnaireId,
+      },
+    });
+
+    if (!questionnaire) {
+      throw new Error(`Questionnaire with id "${questionnaireId}" not found.`);
+    }
+
+    return new PublicQuestionnaireGetDto(questionnaire);
+  }
+
   public async getSteps(questionnaireId: string): Promise<PublicStepGetDto[]> {
     const questions = await this.questionRepository.find({
       where: {

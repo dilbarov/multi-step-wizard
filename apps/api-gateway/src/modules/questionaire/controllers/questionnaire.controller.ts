@@ -15,6 +15,13 @@ export class QuestionnaireController {
     return await this.questionnaireService.getQuestionnaires();
   }
 
+  @Get(':id')
+  @ApiOperation({ summary: 'Getting a specific questionnaire' })
+  @ApiParam({ name: 'id', type: 'string', required: true, description: 'The ID of the questionnaire' })
+  public async getQuestionnaire(@Param('id', UuidPipe) id: string): Promise<PublicQuestionnaireGetDto> {
+    return await this.questionnaireService.getQuestionnaire(id);
+  }
+
   @Get(':id/steps')
   @ApiOperation({ summary: 'Getting the list of steps for a specific questionnaire' })
   @ApiParam({ name: 'id', type: 'string', required: true, description: 'The ID of the questionnaire' })

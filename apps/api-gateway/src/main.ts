@@ -6,7 +6,6 @@ import { Logger, PinoLogger } from 'nestjs-pino';
 import { DataSource } from 'typeorm';
 import { runSeeders } from 'typeorm-extension';
 
-import { swaggerLoad } from '../swagger';
 import { AppModule } from './app.module';
 
 const bootstrap = async (): Promise<void> => {
@@ -25,7 +24,7 @@ const bootstrap = async (): Promise<void> => {
     await dataSource.initialize();
   }
   logger.info(`Seeded database connection`);
-  // await runSeeders(dataSource);
+  await runSeeders(dataSource);
   logger.info('Seeding is finished');
 
   // Validation request data to Type in code
