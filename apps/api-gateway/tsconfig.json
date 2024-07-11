@@ -3,27 +3,7 @@
   "compilerOptions": {
     "moduleResolution": "Node",
     "outDir": "./dist",
-    "baseUrl": "./",
-    "paths": {
-      "@lib/providers": [
-        "libs/providers/src"
-      ],
-      "@lib/providers/*": [
-        "libs/providers/src/*"
-      ],
-      "@entities": [
-        "libs/entities/src"
-      ],
-      "@entities/*": [
-        "libs/entities/src/*"
-      ],
-      "@lib/shared": [
-        "libs/shared/src"
-      ],
-      "@lib/shared/*": [
-        "libs/shared/src/*"
-      ]
-    }
+    "baseUrl": "./"
   },
   "importHelpers": true,
   "exclude": [

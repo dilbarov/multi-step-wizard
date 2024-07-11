@@ -1,9 +1,11 @@
-import { ProvidersModule } from '@lib/providers';
-import { SharedModule } from '@lib/shared';
 import { Module } from '@nestjs/common';
 
+import { DomainsModule } from './modules/domains.module';
+import { ProvidersModule } from './providers';
+import { SharedModule } from './shared';
+
 @Module({
-  imports: [SharedModule, ProvidersModule],
+  imports: [SharedModule, ProvidersModule, DomainsModule],
   controllers: [],
   providers: [],
 })
